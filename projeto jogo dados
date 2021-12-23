@@ -1,0 +1,29 @@
+Projeto de um jogo de dados
+
+
+1 - O usuário deve entrar: quantos dados quer jogar, o valor deles, a quantidade de jogadas e oponentes.
+    # OK
+2 - O programa deve sortear 'dados' números e adicionar em uma lista
+    # Feito por funcao propria
+
+3 - Essa lista tera todos os elementos somados
+
+
+4 - O programa irá comparar o valor resultante com o resultante dos oponentes
+
+
+5 - Deve em seguida computar como vitória, derrota ou empate
+
+
+6 - O programa irá fazer isso 'quantidade' vezes
+
+
+7 - Ao final, deverá retornar qual a quantidade e taxa de vitória, derrota ou empate do usuário.
+    # Ok
+
+
+Atualização 16/11/21
+
+Depois de alguns avanços, o problema da vez é a soma dos elementos dos números sorteados.
+    O problema esta nas linhas 24 e 25. Preciso de outro método para somar os elementos de uma lista,
+    sem itera-la.
