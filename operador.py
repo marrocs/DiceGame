@@ -7,17 +7,11 @@ import random
 
 def roll_dice(dices, faces) -> list:
 
-    res = []
+    result = []
     cont = 0
 
-    while cont != dices:
-        result = random.randint(1, faces)
-        res.append(result)
+    while cont < dices:
+        result.append(random.randint(1, faces))
         cont += 1
 
-    cont = 0
-
-    soma = sum(res)
-
-    return res
-
+    return result

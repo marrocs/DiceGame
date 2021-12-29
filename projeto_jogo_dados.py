@@ -1,15 +1,16 @@
-import random
-import operador
+from operador import roll_dice
 
-print('Welcome to Dice Game!')    # Initiating game
-acao = input('Press anything to start: ')
+print('Welcome to Dice Game!')
 
-if acao is not False:
-    num1, num2 = [], []
+
+def main():
+    roll_dices()
+
+
+def roll_dices():
+
     mtz1, mtz2 = [], []
-    vit = 0
-    emp = 0
-    der = 0
+    win, tie, loss = 0, 0, 0
 
     dices = int(input('Enter how many dices: '))
     faces = int(input('Enter how many sides (up to 100): '))
@@ -18,35 +19,39 @@ if acao is not False:
     rolls = int(input('How many rolls do you want: '))
 
     for x in range(0, rolls):
-        num1.append(operador.roll_dice(dices, faces))
-        num2.append(operador.roll_dice(dices, faces))
+        mtz1.append(roll_dice(dices, faces))
+        mtz2.append(roll_dice(dices, faces))
 
-        lst1 = [i[0] for i in num1]    # thanks, stackoverflow stranger
-        lst2 = [i[0] for i in num2]    # Problems here...
-
-        # Comparando e adicionando ao placar # problemas aqui
-        if sum(lst1) > sum(lst2):
-            vit += 1
-        elif sum(lst1) == sum(lst2):
-            emp += 1
+        if sum(mtz1[x]) == sum(mtz2[x]):
+            tie += 1
+        elif sum(mtz1[x]) > sum(mtz2[x]):
+            win += 1
         else:
-            der += 1
+            loss += 1
 
-    if emp == 0:
-        print(f'Os Jogos foram: \n seu: {num1} \n oponente: {num2} \n\n'
-                f'O placar final foi: \n\n'
-                f'Vezes jogadas: {rolls};\n'
-                f'Vitórias: {vit} vezes ({(vit/rolls)*100:.2f}% das vezes).\n'
-                f'Empates: {emp} vezes ({emp}% das vezes jogadas).\n'
-                f'Derrotas: {der} vezes ({(der/rolls)*100:.2f}% das vezes jogadas).')
+    if tie == 0:
+        print(f'Results: \n Yours: {mtz1} \n Oponent: {mtz2} \n\n'
+                f'Times played: {rolls};\n'
+                f'The final score was: \n\n'
+                f'You win: {win} times ({(win / rolls) * 100:.2f}%).\n'
+                f'You tied: {tie} times ({tie}%).\n'
+                f'You lost: {loss} times ({(loss / rolls) * 100:.2f}%).')
 
     else:
-        print(f'Os Jogos foram: \n {num1} \n {num2} \n\n'
-                f'O placar final foi: \n\n'
-                f'Vezes jogadas: {rolls};\n'
-                f'Vitórias: {vit} ({(vit / rolls) * 100:.2f}% das vezes jogadas).\n'
-                f'Empates: {emp} ({(emp / rolls)*100:.2f}% das vezes jogadas).\n'
-                f'Derrotas: {der} ({(der / rolls)*100:.2f}% das vezes jogadas).')
+        print(f'Results: \n\n Yours: {mtz1} \n Oponent: {mtz2} \n\n'
+                f'Times played: {rolls};\n'
+                f'The final score was: \n\n'
+                f'You win: {win} times ({(win / rolls) * 100:.2f}%).\n'
+                f'You tied: {tie} times ({(tie/rolls) * 100:.2f}%).\n'
+                f'You lost: {loss} times ({(loss / rolls) * 100:.2f}%).')
+
+    asw = input('\n\nWanna play again? (y/n)')
+
+    if asw == 'y':
+        roll_dices()
+    else:
+        print('\n\nEND GAME')
 
 
-print('\n\nFIM DE JOGO.')
+if __name__ == '__main__':
+    main()
